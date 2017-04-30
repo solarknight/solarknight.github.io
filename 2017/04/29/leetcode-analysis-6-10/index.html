@@ -1,0 +1,702 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="algorithm," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="我的答案链接，目前有java/golang/ruby三种语言的答案。 6. ZigZag ConversionDescriptionThe string PAYPALISHIRING is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in">
+<meta name="keywords" content="algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode题解 6-10">
+<meta property="og:url" content="https://solarknight.github.io/2017/04/29/leetcode-analysis-6-10/index.html">
+<meta property="og:site_name" content="Bread and Magic">
+<meta property="og:description" content="我的答案链接，目前有java/golang/ruby三种语言的答案。 6. ZigZag ConversionDescriptionThe string PAYPALISHIRING is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in">
+<meta property="og:updated_time" content="2017-04-30T04:07:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Leetcode题解 6-10">
+<meta name="twitter:description" content="我的答案链接，目前有java/golang/ruby三种语言的答案。 6. ZigZag ConversionDescriptionThe string PAYPALISHIRING is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://solarknight.github.io/2017/04/29/leetcode-analysis-6-10/"/>
+
+
+
+
+
+  <title>Leetcode题解 6-10 | Bread and Magic</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bread and Magic</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://solarknight.github.io/2017/04/29/leetcode-analysis-6-10/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="超能力少年A">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/5563916">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bread and Magic">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Leetcode题解 6-10
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-29T23:40:59+08:00">
+                2017-04-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>我的<a href="https://github.com/solarknight/algorithm_exercise/tree/master/leetcode/src/main" target="_blank" rel="external">答案链接</a>，目前有java/golang/ruby三种语言的答案。</p>
+<h2 id="6-ZigZag-Conversion"><a href="#6-ZigZag-Conversion" class="headerlink" title="6. ZigZag Conversion"></a>6. <a href="https://leetcode.com/problems/zigzag-conversion/#/description" target="_blank" rel="external">ZigZag Conversion</a></h2><h4 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h4><p>The string <code>PAYPALISHIRING</code> is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">P   A   H   N</div><div class="line">A P L S I I G</div><div class="line">Y   I   R</div></pre></td></tr></table></figure></p>
+<p>And then read line by line: <code>PAHNAPLSIIGYIR</code><br>Write the code that will take a string and make this conversion given a number of rows:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">string convert(string text, int nRows);</div></pre></td></tr></table></figure></p>
+<p><code>convert(&quot;PAYPALISHIRING&quot;, 3)</code> should return <code>PAHNAPLSIIGYIR</code>.</p>
+<h4 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h4><p>ZigZag一个周期的长度为<code>T = 2 * （nRows - 1)</code>。解题思路有以下两种：</p>
+<ul>
+<li>横向考虑。新字符串第一个元素为<code>text[0]</code>，第二个元素为<code>text[0 + T]</code>，以此类推。对于第<code>i(0 &lt; i &lt; nRows - 1)</code>row，还要考虑每个Z线上对称的元素。</li>
+<li>纵向考虑。将每个Row当做一个String，最终结果是这些Row对应的String按次序拼接。按顺序向每个Row对应的String中添加元素即可。</li>
+</ul>
+<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">convert</span><span class="params">(String s, <span class="keyword">int</span> numRows)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (s.length() &lt;= <span class="number">1</span> || numRows &lt;= <span class="number">1</span>) &#123;</div><div class="line">    <span class="keyword">return</span> s;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  StringBuilder[] sb = <span class="keyword">new</span> StringBuilder[numRows];</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; sb.length; i++) &#123;</div><div class="line">    sb[i] = <span class="keyword">new</span> StringBuilder();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">int</span> incr = <span class="number">0</span>;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; j &lt; s.length(); j++) &#123;</div><div class="line">    <span class="keyword">if</span> (i == <span class="number">0</span>) &#123;</div><div class="line">      incr = <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (i == numRows - <span class="number">1</span>) &#123;</div><div class="line">      incr = -<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    sb[i].append(s.charAt(j));</div><div class="line">    i += incr;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; sb.length; i++) &#123;</div><div class="line">    sb[<span class="number">0</span>].append(sb[i]);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> sb[<span class="number">0</span>].toString();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="7-Reverse-Integer"><a href="#7-Reverse-Integer" class="headerlink" title="7. Reverse Integer"></a>7. <a href="https://leetcode.com/problems/reverse-integer/#/description" target="_blank" rel="external">Reverse Integer</a></h2><h4 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h4><p>Reverse digits of an integer.<br>Example1: x = 123, return 321<br>Example2: x = -123, return -321</p>
+<p>The input is assumed to be a 32-bit signed integer. Your function should return 0 when the reversed integer overflows.</p>
+<h4 id="Analysis-1"><a href="#Analysis-1" class="headerlink" title="Analysis"></a>Analysis</h4><p>这道题主要考察对边界的处理。最简单的方式是在转换过程中，使用一个64-bit的数保存中间结果，在返回前判断其是否超过32-bit的边界。<br>反转操作可参考下式：<br><code>r, x = (10 * r + x % 10), x / 10 while x != 0</code></p>
+<h4 id="Answer-1"><a href="#Answer-1" class="headerlink" title="Answer"></a>Answer</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">  <span class="keyword">long</span> r = <span class="number">0</span>;</div><div class="line">  <span class="keyword">for</span> (; x != <span class="number">0</span>; x /= <span class="number">10</span>) &#123;</div><div class="line">    r = <span class="number">10</span> * r + x % <span class="number">10</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> r &gt; Integer.MAX_VALUE || r &lt; Integer.MIN_VALUE ? <span class="number">0</span> : (<span class="keyword">int</span>) r;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="8-String-to-Integer-atoi"><a href="#8-String-to-Integer-atoi" class="headerlink" title="8. String to Integer (atoi)"></a>8. <a href="https://leetcode.com/problems/string-to-integer-atoi/#/description" target="_blank" rel="external">String to Integer (atoi)</a></h2><h4 id="Description-2"><a href="#Description-2" class="headerlink" title="Description"></a>Description</h4><p>Implement atoi to convert a string to an integer.</p>
+<p>Requirements for atoi:<br>The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.<br>The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.<br>If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.<br>If no valid conversion could be performed, a zero value is returned. If the correct value is out of the range of representable values, INT_MAX (2147483647) or INT_MIN (-2147483648) is returned.</p>
+<h4 id="Analysis-2"><a href="#Analysis-2" class="headerlink" title="Analysis"></a>Analysis</h4><p>不看提示很难跑过所有Test case的一道题。将字符串转换为整数的操作和上一题接近，都是在遍历过程中，将中间结果乘以10，再加上新的数字。<br>和上一题不同的是，即使使用64bit-int来保存中间结果，也有可能发生越界的问题。因此最好的处理方式是在遍历过程中加以判断。</p>
+<h4 id="Answer-2"><a href="#Answer-2" class="headerlink" title="Answer"></a>Answer</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(String str)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (str == <span class="keyword">null</span> || str.length() == <span class="number">0</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">char</span>[] c = str.toCharArray();</div><div class="line">  <span class="keyword">int</span> idx = <span class="number">0</span>, flag = <span class="number">1</span>;</div><div class="line">  <span class="keyword">long</span> sum = <span class="number">0</span>;</div><div class="line">  <span class="keyword">while</span> (c[idx] == <span class="string">' '</span>) &#123;</div><div class="line">    idx++;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (c[idx] == <span class="string">'-'</span>) &#123;</div><div class="line">    flag = -<span class="number">1</span>;</div><div class="line">    idx++;</div><div class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c[idx] == <span class="string">'+'</span>) &#123;</div><div class="line">    idx++;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">for</span> (; idx &lt; c.length; idx++) &#123;</div><div class="line">    <span class="keyword">int</span> t = c[idx] - <span class="string">'0'</span>;</div><div class="line">    <span class="keyword">if</span> (t &lt; <span class="number">0</span> || t &gt; <span class="number">9</span>) &#123;</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    sum = sum * <span class="number">10</span> + t;</div><div class="line">    <span class="keyword">if</span> (sum &gt; Integer.MAX_VALUE) &#123;</div><div class="line">      <span class="keyword">return</span> flag == <span class="number">1</span> ? Integer.MAX_VALUE : Integer.MIN_VALUE;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> (<span class="keyword">int</span>) sum * flag;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="9-Palindrome-Number"><a href="#9-Palindrome-Number" class="headerlink" title="9. Palindrome Number"></a>9. <a href="https://leetcode.com/problems/palindrome-number/#/description" target="_blank" rel="external">Palindrome Number</a></h2><h4 id="Description-3"><a href="#Description-3" class="headerlink" title="Description"></a>Description</h4><p>Determine whether an integer is a palindrome. Do this without extra space.</p>
+<h4 id="Analysis-3"><a href="#Analysis-3" class="headerlink" title="Analysis"></a>Analysis</h4><p>回文串是对称的，这一特性放到数字上，也就意味着对称轴一侧的数字反转后和另一侧相等。参考上面的数字反转算法，再对边界条件做处理，即可得到答案。<br>回文串长度为奇数和偶数时程序上判断条件不同，为奇数时要对较大的部分除以10再进行比较。</p>
+<h4 id="Answer-3"><a href="#Answer-3" class="headerlink" title="Answer"></a>Answer</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (x &lt; <span class="number">0</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (x &gt;= <span class="number">0</span> &amp;&amp; x &lt; <span class="number">10</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (x % <span class="number">10</span> == <span class="number">0</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">int</span> rev = <span class="number">0</span>;</div><div class="line">  <span class="keyword">for</span> (; x &gt; rev; x /= <span class="number">10</span>) &#123;</div><div class="line">    rev = <span class="number">10</span> * rev + x % <span class="number">10</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> x == rev || x == rev / <span class="number">10</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="10-Regular-Expression-Matching"><a href="#10-Regular-Expression-Matching" class="headerlink" title="10. Regular Expression Matching"></a>10. <a href="https://leetcode.com/problems/regular-expression-matching/#/description" target="_blank" rel="external">Regular Expression Matching</a></h2><h4 id="Description-4"><a href="#Description-4" class="headerlink" title="Description"></a>Description</h4><p>Implement regular expression matching with support for <code>&#39;.&#39;</code> and <code>&#39;*&#39;</code>.<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&apos;.&apos; Matches any single character.</div><div class="line">&apos;*&apos; Matches zero or more of the preceding element.</div><div class="line"></div><div class="line">The matching should cover the entire input string (not partial).</div><div class="line"></div><div class="line">The function prototype should be:</div><div class="line">bool isMatch(const char *s, const char *p)</div><div class="line"></div><div class="line">Some examples:</div><div class="line">isMatch(&quot;aa&quot;,&quot;a&quot;) → false</div><div class="line">isMatch(&quot;aa&quot;,&quot;aa&quot;) → true</div><div class="line">isMatch(&quot;aaa&quot;,&quot;aa&quot;) → false</div><div class="line">isMatch(&quot;aa&quot;, &quot;a*&quot;) → true</div><div class="line">isMatch(&quot;aa&quot;, &quot;.*&quot;) → true</div><div class="line">isMatch(&quot;ab&quot;, &quot;.*&quot;) → true</div><div class="line">isMatch(&quot;aab&quot;, &quot;c*a*b&quot;) → true</div></pre></td></tr></table></figure></p>
+<h4 id="Analysis-4"><a href="#Analysis-4" class="headerlink" title="Analysis"></a>Analysis</h4><p>s[0..i]和p[0..j]是否匹配，取决于之前字符串的匹配情况，因此这一题比较适合用动态规划来解决。构建一个长度为<code>bool[len(s) + 1][len(p) + 1]</code>的数组，以减少对边界条件的处理。<br>初始化时，<code>dp[0][0]</code>处为true，其余元素为false。然后判断<code>dp[0][j](1 &lt; j &lt;= len(p))</code>时的值。<br>对于<code>dp[i][j](1 &lt;= i &lt;= len(s), 1 &lt;= j &lt;= len(p))</code>，如果<code>p[j] == s[i] || p[j] == &#39;.&#39;</code>，则有<code>dp[i + 1][j + 1] = dp[i][j]</code>。<br>如果<code>p[j] == &#39;*&#39;</code>，又需要对<code>p[j - 1] == s[i] || p[j - 1] == &#39;.&#39;</code>及不满足的情况分别考虑。</p>
+<h4 id="Answer-4"><a href="#Answer-4" class="headerlink" title="Answer"></a>Answer</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isMatch</span><span class="params">(String s, String p)</span> </span>&#123;</div><div class="line">  <span class="keyword">boolean</span>[][] dp = <span class="keyword">new</span> <span class="keyword">boolean</span>[s.length() + <span class="number">1</span>][p.length() + <span class="number">1</span>];</div><div class="line">  dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="keyword">true</span>;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; p.length(); i++) &#123;</div><div class="line">    dp[<span class="number">0</span>][i + <span class="number">1</span>] = p.charAt(i) == <span class="string">'*'</span> &amp;&amp; dp[<span class="number">0</span>][i - <span class="number">1</span>];</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; p.length(); j++) &#123;</div><div class="line">      <span class="keyword">if</span> (p.charAt(j) == s.charAt(i)) &#123;</div><div class="line">        dp[i + <span class="number">1</span>][j + <span class="number">1</span>] = dp[i][j];</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">if</span> (p.charAt(j) == <span class="string">'.'</span>) &#123;</div><div class="line">        dp[i + <span class="number">1</span>][j + <span class="number">1</span>] = dp[i][j];</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">if</span> (p.charAt(j) == <span class="string">'*'</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (p.charAt(j - <span class="number">1</span>) != s.charAt(i) &amp;&amp; p.charAt(j - <span class="number">1</span>) != <span class="string">'.'</span>) &#123;</div><div class="line">          dp[i + <span class="number">1</span>][j + <span class="number">1</span>] = dp[i + <span class="number">1</span>][j - <span class="number">1</span>];</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">          <span class="comment">// zero || one || multi (count &gt;= 2)</span></div><div class="line">          dp[i + <span class="number">1</span>][j + <span class="number">1</span>] = dp[i + <span class="number">1</span>][j - <span class="number">1</span>] || dp[i + <span class="number">1</span>][j] || dp[i][j + <span class="number">1</span>];</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> dp[s.length()][p.length()];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/algorithm/" rel="tag"># algorithm</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/29/leetcode-analysis-1-5/" rel="next" title="Leetcode题解 1-5">
+                <i class="fa fa-chevron-left"></i> Leetcode题解 1-5
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars2.githubusercontent.com/u/5563916"
+               alt="超能力少年A" />
+          <p class="site-author-name" itemprop="name">超能力少年A</p>
+           
+              <p class="site-description motion-element" itemprop="description">We are all in the gutter, but some of us are looking at the stars.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-ZigZag-Conversion"><span class="nav-number">1.</span> <span class="nav-text">6. ZigZag Conversion</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Description"><span class="nav-number">1.0.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis"><span class="nav-number">1.0.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Answer"><span class="nav-number">1.0.3.</span> <span class="nav-text">Answer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Reverse-Integer"><span class="nav-number">2.</span> <span class="nav-text">7. Reverse Integer</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Description-1"><span class="nav-number">2.0.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis-1"><span class="nav-number">2.0.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Answer-1"><span class="nav-number">2.0.3.</span> <span class="nav-text">Answer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-String-to-Integer-atoi"><span class="nav-number">3.</span> <span class="nav-text">8. String to Integer (atoi)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Description-2"><span class="nav-number">3.0.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis-2"><span class="nav-number">3.0.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Answer-2"><span class="nav-number">3.0.3.</span> <span class="nav-text">Answer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-Palindrome-Number"><span class="nav-number">4.</span> <span class="nav-text">9. Palindrome Number</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Description-3"><span class="nav-number">4.0.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis-3"><span class="nav-number">4.0.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Answer-3"><span class="nav-number">4.0.3.</span> <span class="nav-text">Answer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-Regular-Expression-Matching"><span class="nav-number">5.</span> <span class="nav-text">10. Regular Expression Matching</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Description-4"><span class="nav-number">5.0.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis-4"><span class="nav-number">5.0.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Answer-4"><span class="nav-number">5.0.3.</span> <span class="nav-text">Answer</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">超能力少年A</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

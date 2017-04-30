@@ -1,0 +1,695 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="algorithm," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Leetcode上面有大量简洁又不失难度的算法题，是磨炼功底的好地方。对于部分题目，网上的答案只有简单的how to do it，而缺少why的分析过程。因此在这里记录一下解题思路，以便温故而知新。所有分析都是基于时间复杂度最优的解法，这里是我的答案链接，目前有java/golang/ruby三种语言的答案。 1. Two SumDescriptionGiven an array of integ">
+<meta name="keywords" content="algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode题解 1-5">
+<meta property="og:url" content="https://solarknight.github.io/2017/04/29/leetcode-analysis-1-10/index.html">
+<meta property="og:site_name" content="Bread and Magic">
+<meta property="og:description" content="Leetcode上面有大量简洁又不失难度的算法题，是磨炼功底的好地方。对于部分题目，网上的答案只有简单的how to do it，而缺少why的分析过程。因此在这里记录一下解题思路，以便温故而知新。所有分析都是基于时间复杂度最优的解法，这里是我的答案链接，目前有java/golang/ruby三种语言的答案。 1. Two SumDescriptionGiven an array of integ">
+<meta property="og:updated_time" content="2017-04-29T15:30:22.342Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Leetcode题解 1-5">
+<meta name="twitter:description" content="Leetcode上面有大量简洁又不失难度的算法题，是磨炼功底的好地方。对于部分题目，网上的答案只有简单的how to do it，而缺少why的分析过程。因此在这里记录一下解题思路，以便温故而知新。所有分析都是基于时间复杂度最优的解法，这里是我的答案链接，目前有java/golang/ruby三种语言的答案。 1. Two SumDescriptionGiven an array of integ">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://solarknight.github.io/2017/04/29/leetcode-analysis-1-10/"/>
+
+
+
+
+
+  <title>Leetcode题解 1-5 | Bread and Magic</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bread and Magic</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://solarknight.github.io/2017/04/29/leetcode-analysis-1-10/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="超能力少年A">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/5563916">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bread and Magic">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Leetcode题解 1-5
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-29T20:59:09+08:00">
+                2017-04-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://leetcode.com/problemset/algorithms" target="_blank" rel="external">Leetcode</a>上面有大量简洁又不失难度的算法题，是磨炼功底的好地方。<br>对于部分题目，网上的答案只有简单的<code>how to do it</code>，而缺少<code>why</code>的分析过程。因此在这里记录一下解题思路，以便温故而知新。<br>所有分析都是基于时间复杂度最优的解法，这里是我的<a href="https://github.com/solarknight/algorithm_exercise/tree/master/leetcode/src/main" target="_blank" rel="external">答案链接</a>，目前有java/golang/ruby三种语言的答案。</p>
+<h2 id="1-Two-Sum"><a href="#1-Two-Sum" class="headerlink" title="1. Two Sum"></a>1. <a href="https://leetcode.com/problems/two-sum/#/description" target="_blank" rel="external">Two Sum</a></h2><h4 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h4><p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.<br>You may assume that each input would have exactly one solution, and you may not use the same element twice.<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Given nums = [2, 7, 11, 15], target = 9,</div><div class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</div><div class="line">return [0, 1].</div></pre></td></tr></table></figure></p>
+<h4 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h4><p>数组是未排序数组，因此不能通过二分查找这样的方法来寻找特定元素。直接暴力寻找的话，需要O(N<sup>2</sup>)的时间复杂度。由于我们至少要遍历一次数组，如果在遍历到下标为<code>i</code>的数组元素时，能以O(1)的时间从前面所有元素中找到符合的结果，即可达到O(N)的时间复杂度。基于哈希的结构可以做到这一点。</p>
+<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</div><div class="line">  Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</div><div class="line"></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">    <span class="keyword">int</span> tmp = target - nums[i];</div><div class="line">    <span class="keyword">if</span> (map.containsKey(tmp)) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;map.get(tmp), i&#125;;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      map.put(nums[i], i);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="2-Add-Two-Numbers"><a href="#2-Add-Two-Numbers" class="headerlink" title="2. Add Two Numbers"></a>2. <a href="https://leetcode.com/problems/add-two-numbers/#/description" target="_blank" rel="external">Add Two Numbers</a></h2><h4 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h4><p>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.<br>You may assume the two numbers do not contain any leading zero, except the number 0 itself.<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)</div><div class="line">Output: 7 -&gt; 0 -&gt; 8</div></pre></td></tr></table></figure></p>
+<h4 id="Analysis-1"><a href="#Analysis-1" class="headerlink" title="Analysis"></a>Analysis</h4><p>这道题主要考察链表的操作，以及计算两数之和后，对进位的处理。保存新结果的链表至少需要两个指针，一个指向当前位置，用于程序处理。另一个指向链表头，用于结果返回。在使用链表的指针时，还要注意判空。<br>为了方便程序处理，设置了一个额外的<code>ListNode</code>作为<code>Head</code>，这种技巧在后面的题目中也多次使用。</p>
+<h4 id="Answer-1"><a href="#Answer-1" class="headerlink" title="Answer"></a>Answer</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">  ListNode head = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">  ListNode cur = head;</div><div class="line">  ListNode curL1 = l1;</div><div class="line">  ListNode curL2 = l2;</div><div class="line"></div><div class="line">  <span class="keyword">int</span> carry = <span class="number">0</span>;</div><div class="line">  <span class="keyword">int</span> sum;</div><div class="line">  <span class="keyword">while</span> (curL1 != <span class="keyword">null</span> || curL2 != <span class="keyword">null</span> || carry != <span class="number">0</span>) &#123;</div><div class="line">    sum = (curL1 != <span class="keyword">null</span> ? curL1.val : <span class="number">0</span>) + (curL2 != <span class="keyword">null</span> ? curL2.val : <span class="number">0</span>) + carry;</div><div class="line">    carry = sum / <span class="number">10</span>;</div><div class="line">    cur.next = <span class="keyword">new</span> ListNode(sum % <span class="number">10</span>);</div><div class="line">    cur = cur.next;</div><div class="line">    curL1 = curL1 != <span class="keyword">null</span> ? curL1.next : <span class="keyword">null</span>;</div><div class="line">    curL2 = curL2 != <span class="keyword">null</span> ? curL2.next : <span class="keyword">null</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> head.next;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="3-Longest-Substring-Without-Repeating-Characters"><a href="#3-Longest-Substring-Without-Repeating-Characters" class="headerlink" title="3. Longest Substring Without Repeating Characters"></a>3. <a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/#/description" target="_blank" rel="external">Longest Substring Without Repeating Characters</a></h2><h4 id="Description-2"><a href="#Description-2" class="headerlink" title="Description"></a>Description</h4><p>Given a string, find the length of the longest substring without repeating characters.<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Given &quot;abcabcbb&quot;, the answer is &quot;abc&quot;, which the length is 3.</div><div class="line">Given &quot;bbbbb&quot;, the answer is &quot;b&quot;, with the length of 1.</div><div class="line">Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. Note that the answer must be a substring, &quot;pwke&quot; is a subsequence and not a substring.</div></pre></td></tr></table></figure></p>
+<h4 id="Analysis-2"><a href="#Analysis-2" class="headerlink" title="Analysis"></a>Analysis</h4><p>和第一题的思路类似，在一次遍历过程中，通过哈希结构记录各字符最近的位置。当找到相同的字符时，判断当前子字符串长度是否大于之前记录的最长不重复子串，如大于则更新。</p>
+<h4 id="Answer-2"><a href="#Answer-2" class="headerlink" title="Answer"></a>Answer</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">  <span class="keyword">char</span>[] c = s.toCharArray();</div><div class="line">  Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;Character, Integer&gt;();</div><div class="line">  <span class="keyword">int</span> pIdx = <span class="number">0</span>, idx = <span class="number">0</span>, max = <span class="number">0</span>;</div><div class="line"></div><div class="line">  <span class="keyword">for</span> (; idx &lt; c.length; idx++) &#123;</div><div class="line">    <span class="keyword">if</span> (map.containsKey(c[idx])) &#123;</div><div class="line">      max = (idx - pIdx) &gt; max ? (idx - pIdx) : max;</div><div class="line">      pIdx = (map.get(c[idx]) + <span class="number">1</span> &gt; pIdx) ? (map.get(c[idx]) + <span class="number">1</span>) : pIdx;</div><div class="line">    &#125;</div><div class="line">    map.put(c[idx], idx);</div><div class="line">  &#125;</div><div class="line">  max = (idx - pIdx) &gt; max ? (idx - pIdx) : max;</div><div class="line">  <span class="keyword">return</span> max;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="4-Median-of-Two-Sorted-Arrays"><a href="#4-Median-of-Two-Sorted-Arrays" class="headerlink" title="4. Median of Two Sorted Arrays"></a>4. <a href="https://leetcode.com/problems/median-of-two-sorted-arrays/#/description" target="_blank" rel="external">Median of Two Sorted Arrays</a></h2><h4 id="Description-3"><a href="#Description-3" class="headerlink" title="Description"></a>Description</h4><p>There are two sorted arrays nums1 and nums2 of size m and n respectively.<br>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">nums1 = [1, 3]</div><div class="line">nums2 = [2]</div><div class="line">The median is 2.0</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">nums1 = [1, 2]</div><div class="line">nums2 = [3, 4]</div><div class="line">The median is (2 + 3)/2 = 2.5</div></pre></td></tr></table></figure>
+<h4 id="Analysis-3"><a href="#Analysis-3" class="headerlink" title="Analysis"></a>Analysis</h4><p><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/#/solutions" target="_blank" rel="external">这里解释的非常详细</a>。<br>注意其中为了方便处理奇数和偶数长度的数组，添加了额外的数组元素。</p>
+<h4 id="Answer-3"><a href="#Answer-3" class="headerlink" title="Answer"></a>Answer</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">findMedianSortedArrays</span><span class="params">(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2)</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> l1 = nums1.length, l2 = nums2.length;</div><div class="line">  <span class="keyword">if</span> (l1 &gt; l2) &#123;</div><div class="line">    <span class="keyword">return</span> findMedianSortedArrays(nums2, nums1);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (l1 == <span class="number">0</span>) &#123;</div><div class="line">    <span class="keyword">return</span> (nums2[(l2 - <span class="number">1</span>) / <span class="number">2</span>] + nums2[l2 / <span class="number">2</span>]) / <span class="number">2.0</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">int</span> left = <span class="number">0</span>, right = <span class="number">2</span> * l1;</div><div class="line">  <span class="keyword">while</span> (left &lt;= right) &#123;</div><div class="line">    <span class="keyword">int</span> mid1 = (left + right) / <span class="number">2</span>;</div><div class="line">    <span class="keyword">int</span> mid2 = l1 + l2 - mid1;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> lv1 = mid1 == <span class="number">0</span> ? Integer.MIN_VALUE : nums1[(mid1 - <span class="number">1</span>) / <span class="number">2</span>];</div><div class="line">    <span class="keyword">int</span> rv1 = mid1 == <span class="number">2</span> * l1 ? Integer.MAX_VALUE : nums1[mid1 / <span class="number">2</span>];</div><div class="line">    <span class="keyword">int</span> lv2 = mid2 == <span class="number">0</span> ? Integer.MIN_VALUE : nums2[(mid2 - <span class="number">1</span>) / <span class="number">2</span>];</div><div class="line">    <span class="keyword">int</span> rv2 = mid2 == <span class="number">2</span> * l2 ? Integer.MAX_VALUE : nums2[mid2 / <span class="number">2</span>];</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (lv1 &lt;= rv2 &amp;&amp; lv2 &lt;= rv1) &#123;</div><div class="line">      <span class="keyword">return</span> (Math.max(lv1, lv2) + Math.min(rv1, rv2)) / <span class="number">2.0</span>;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (lv1 &gt; rv2) &#123;</div><div class="line">      right = mid1 - <span class="number">1</span>;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      left = mid1 + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="5-Longest-Palindromic-Substring"><a href="#5-Longest-Palindromic-Substring" class="headerlink" title="5. Longest Palindromic Substring"></a>5. <a href="https://leetcode.com/problems/longest-palindromic-substring/#/description" target="_blank" rel="external">Longest Palindromic Substring</a></h2><h4 id="Description-4"><a href="#Description-4" class="headerlink" title="Description"></a>Description</h4><p>Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Input: &quot;babad&quot;</div><div class="line">Output: &quot;bab&quot;</div><div class="line">Note: &quot;aba&quot; is also a valid answer.</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Input: &quot;cbbd&quot;</div><div class="line">Output: &quot;bb&quot;</div></pre></td></tr></table></figure>
+<h4 id="Analysis-4"><a href="#Analysis-4" class="headerlink" title="Analysis"></a>Analysis</h4><p>回文子串可能是奇数长度，也可能是偶数长度。因此，这里为了方便处理，也用了和上一题相似的技巧，在原字符串中加入<code>#</code>分隔符。<br>同时，在左右两边分别加入不相等的<code>^</code>、<code>$</code>符号以方便处理。<br><code>Manacher&#39;s algorithm</code>可以在O(n)的时间内解决这道题。它的核心思想是保存一个记录回文串长度的数组，并利用回文串对称的特性，减少字符遍历和比较次数。<br>注意网上很多答案在计算出回文串长度的数组后，又对其进行遍历以求最大值，其实这个操作可以通过记录最大长度来优化。</p>
+<h4 id="Answer-4"><a href="#Answer-4" class="headerlink" title="Answer"></a>Answer</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">longestPalindrome</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (s == <span class="keyword">null</span> || s.length() &lt;= <span class="number">1</span>) &#123;</div><div class="line">    <span class="keyword">return</span> s;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">char</span>[] c = process(s);</div><div class="line">  <span class="keyword">int</span>[] p = <span class="keyword">new</span> <span class="keyword">int</span>[c.length];</div><div class="line">  <span class="keyword">int</span> idx = <span class="number">0</span>, right = <span class="number">0</span>, mIdx = <span class="number">0</span>;</div><div class="line"></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; c.length - <span class="number">1</span>; i++) &#123;</div><div class="line">    p[i] = right &gt; i ? Math.min(p[<span class="number">2</span> * idx - i], right - i) : <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> (c[i + p[i] + <span class="number">1</span>] == c[i - p[i] - <span class="number">1</span>]) &#123;</div><div class="line">      p[i]++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (i + p[i] &gt; right) &#123;</div><div class="line">      right = i + p[i];</div><div class="line">      idx = i;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (p[i] &gt; p[mIdx]) &#123;</div><div class="line">      mIdx = i;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">int</span> start = (mIdx - p[mIdx] - <span class="number">1</span>) / <span class="number">2</span>;</div><div class="line">  <span class="keyword">return</span> s.substring(start, start + p[mIdx]);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="keyword">char</span>[] process(String s) &#123;</div><div class="line">  <span class="keyword">char</span>[] origin = s.toCharArray();</div><div class="line">  <span class="keyword">char</span>[] after = <span class="keyword">new</span> <span class="keyword">char</span>[origin.length * <span class="number">2</span> + <span class="number">3</span>];</div><div class="line"></div><div class="line">  after[<span class="number">0</span>] = <span class="string">'^'</span>;</div><div class="line">  after[after.length - <span class="number">1</span>] = <span class="string">'$'</span>;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt; after.length - <span class="number">1</span>; i++) &#123;</div><div class="line">    after[i] = i % <span class="number">2</span> != <span class="number">0</span> ? <span class="string">'#'</span> : origin[j++];</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> after;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/algorithm/" rel="tag"># algorithm</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/22/spring-cors-support/" rel="next" title="Spring MVC 配置 CORS 标准支持">
+                <i class="fa fa-chevron-left"></i> Spring MVC 配置 CORS 标准支持
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars2.githubusercontent.com/u/5563916"
+               alt="超能力少年A" />
+          <p class="site-author-name" itemprop="name">超能力少年A</p>
+           
+              <p class="site-description motion-element" itemprop="description">We are all in the gutter, but some of us are looking at the stars.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Two-Sum"><span class="nav-number">1.</span> <span class="nav-text">1. Two Sum</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Description"><span class="nav-number">1.0.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis"><span class="nav-number">1.0.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Answer"><span class="nav-number">1.0.3.</span> <span class="nav-text">Answer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Add-Two-Numbers"><span class="nav-number">2.</span> <span class="nav-text">2. Add Two Numbers</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Description-1"><span class="nav-number">2.0.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis-1"><span class="nav-number">2.0.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Answer-1"><span class="nav-number">2.0.3.</span> <span class="nav-text">Answer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Longest-Substring-Without-Repeating-Characters"><span class="nav-number">3.</span> <span class="nav-text">3. Longest Substring Without Repeating Characters</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Description-2"><span class="nav-number">3.0.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis-2"><span class="nav-number">3.0.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Answer-2"><span class="nav-number">3.0.3.</span> <span class="nav-text">Answer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Median-of-Two-Sorted-Arrays"><span class="nav-number">4.</span> <span class="nav-text">4. Median of Two Sorted Arrays</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Description-3"><span class="nav-number">4.0.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis-3"><span class="nav-number">4.0.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Answer-3"><span class="nav-number">4.0.3.</span> <span class="nav-text">Answer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Longest-Palindromic-Substring"><span class="nav-number">5.</span> <span class="nav-text">5. Longest Palindromic Substring</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Description-4"><span class="nav-number">5.0.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis-4"><span class="nav-number">5.0.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Answer-4"><span class="nav-number">5.0.3.</span> <span class="nav-text">Answer</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">超能力少年A</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
