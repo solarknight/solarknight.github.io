@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="我的答案链接，目前有java/golang/ruby三种语言的答案。 6. ZigZag ConversionDescriptionThe string PAYPALISHIRING is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in">
+<meta name="description" content="我的答案链接，目前有java/golang/ruby三种语言的答案。 11. Container With Most WaterDescriptionGiven n non-negative integers a1, a2, …, an, where each represents a point at coordinate (i, ai). n vertical lines are drawn">
 <meta name="keywords" content="algorithm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode题解 6-10">
-<meta property="og:url" content="https://solarknight.github.io/2017/04/29/leetcode-analysis-6-10/index.html">
+<meta property="og:title" content="Leetcode题解 11-15">
+<meta property="og:url" content="https://solarknight.github.io/2017/04/30/leetcode-analysis-11-15/index.html">
 <meta property="og:site_name" content="Bread and Magic">
-<meta property="og:description" content="我的答案链接，目前有java/golang/ruby三种语言的答案。 6. ZigZag ConversionDescriptionThe string PAYPALISHIRING is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in">
-<meta property="og:updated_time" content="2017-04-30T04:07:54.000Z">
+<meta property="og:description" content="我的答案链接，目前有java/golang/ruby三种语言的答案。 11. Container With Most WaterDescriptionGiven n non-negative integers a1, a2, …, an, where each represents a point at coordinate (i, ai). n vertical lines are drawn">
+<meta property="og:updated_time" content="2017-05-01T02:06:46.741Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode题解 6-10">
-<meta name="twitter:description" content="我的答案链接，目前有java/golang/ruby三种语言的答案。 6. ZigZag ConversionDescriptionThe string PAYPALISHIRING is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in">
+<meta name="twitter:title" content="Leetcode题解 11-15">
+<meta name="twitter:description" content="我的答案链接，目前有java/golang/ruby三种语言的答案。 11. Container With Most WaterDescriptionGiven n non-negative integers a1, a2, …, an, where each represents a point at coordinate (i, ai). n vertical lines are drawn">
 
 
 
@@ -128,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="https://solarknight.github.io/2017/04/29/leetcode-analysis-6-10/"/>
+  <link rel="canonical" href="https://solarknight.github.io/2017/04/30/leetcode-analysis-11-15/"/>
 
 
 
 
 
-  <title>Leetcode题解 6-10 | Bread and Magic</title>
+  <title>Leetcode题解 11-15 | Bread and Magic</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -253,7 +253,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://solarknight.github.io/2017/04/29/leetcode-analysis-6-10/">
+    <link itemprop="mainEntityOfPage" href="https://solarknight.github.io/2017/04/30/leetcode-analysis-11-15/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="超能力少年A">
@@ -274,7 +274,7 @@
             
             
               
-                Leetcode题解 6-10
+                Leetcode题解 11-15
               
             
           </h1>
@@ -289,8 +289,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-29T23:40:59+08:00">
-                2017-04-29
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-30T12:10:39+08:00">
+                2017-04-30
               </time>
             
 
@@ -325,18 +325,26 @@
 
       
         <p>我的<a href="https://github.com/solarknight/algorithm_exercise/tree/master/leetcode/src/main" target="_blank" rel="external">答案链接</a>，目前有java/golang/ruby三种语言的答案。</p>
-<h2 id="6-ZigZag-Conversion"><a href="#6-ZigZag-Conversion" class="headerlink" title="6. ZigZag Conversion"></a>6. <a href="https://leetcode.com/problems/zigzag-conversion/#/description" target="_blank" rel="external">ZigZag Conversion</a></h2><h4 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h4><p>The string <code>PAYPALISHIRING</code> is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">P   A   H   N</div><div class="line">A P L S I I G</div><div class="line">Y   I   R</div></pre></td></tr></table></figure></p>
-<p>And then read line by line: <code>PAHNAPLSIIGYIR</code><br>Write the code that will take a string and make this conversion given a number of rows:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">string convert(string text, int nRows);</div></pre></td></tr></table></figure></p>
-<p><code>convert(&quot;PAYPALISHIRING&quot;, 3)</code> should return <code>PAHNAPLSIIGYIR</code>.</p>
-<h4 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h4><p>ZigZag一个周期的长度为<code>T = 2 * （nRows - 1)</code>。解题思路有以下两种：</p>
+<h2 id="11-Container-With-Most-Water"><a href="#11-Container-With-Most-Water" class="headerlink" title="11. Container With Most Water"></a>11. <a href="https://leetcode.com/problems/container-with-most-water/#/description" target="_blank" rel="external">Container With Most Water</a></h2><h4 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h4><p>Given n non-negative integers a<sub>1</sub>, a<sub>2</sub>, …, a<sub>n</sub>, where each represents a point at coordinate (i, a<sub>i</sub>). n vertical lines are drawn such that the two endpoints of line i is at (i, a<sub>i</sub>) and (i, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.</p>
+<p>Note: You may not slant the container and n is at least 2.</p>
+<h4 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h4><p>由<code>a[i]</code>和<code>a[j]</code>构成的容器，其面积为<code>(j - i) * min(a[i], a[j])</code>。最左和最右两点构成的容器拥有最大的宽度，可以从这里开始遍历。<br>如果要比初始的容器面积大，则需要有更大的高度。因此可以逐渐缩小范围，直至获得最大值。</p>
+<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="keyword">int</span>[] height)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> max = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, j = height.length - <span class="number">1</span>; i &lt; j; ) &#123;</div><div class="line">      max = Math.max(max, (j - i) * Math.min(height[i], height[j]));</div><div class="line">      <span class="keyword">if</span> (height[i] &lt; height[j]) &#123;</div><div class="line">        i++;</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        j--;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> max;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="7-Integer-to-Roman"><a href="#7-Integer-to-Roman" class="headerlink" title="7. Integer to Roman"></a>7. <a href="https://leetcode.com/problems/integer-to-roman/#/description" target="_blank" rel="external">Integer to Roman</a></h2><h4 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h4><p>Given an integer, convert it to a roman numeral.<br>Input is guaranteed to be within the range from 1 to 3999.</p>
+<h4 id="Analysis-1"><a href="#Analysis-1" class="headerlink" title="Analysis"></a>Analysis</h4><p>首先要知道各个罗马数字，以及它们与十进制整数之间的转换关系。可以参考<a href="https://zh.wikipedia.org/wiki/%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97" target="_blank" rel="external">维基百科中的描述</a>。<br>罗马数字共有7个，即Ⅰ（1）、Ⅴ（5）、Ⅹ（10）、Ⅼ（50）、Ⅽ（100）、Ⅾ（500）和Ⅿ（1000）。按照下述的规则可以表示任意正整数。需要注意的是罗马数字中没有“0”，与进位制无关。</p>
 <ul>
-<li>横向考虑。新字符串第一个元素为<code>text[0]</code>，第二个元素为<code>text[0 + T]</code>，以此类推。对于第<code>i(0 &lt; i &lt; nRows - 1)</code>row，还要考虑每个Z线上对称的元素。</li>
-<li>纵向考虑。将每个Row当做一个String，最终结果是这些Row对应的String按次序拼接。按顺序向每个Row对应的String中添加元素即可。</li>
+<li>重复数次：一个罗马数字重复几次，就表示这个数的几倍。</li>
+<li>右加左减：<ul>
+<li>在较大的罗马数字的右边记上较小的罗马数字，表示大数字加小数字。</li>
+<li>在较大的罗马数字的左边记上较小的罗马数字，表示大数字减小数字。</li>
+<li>左减的数字有限制，仅限于I、X、C。比如45不可以写成VL，只能是XLV</li>
+<li>但是，左减时不可跨越一个位值。比如，99不可以用IC（ {\displaystyle 100-1} 100-1）表示，而是用XCIX（ {\displaystyle [100-10]+[10-1]} [100-10]+[10-1]）表示。（等同于阿拉伯数字每位数字分别表示。）</li>
+<li>左减数字必须为一位，比如8写成VIII，而非IIX。</li>
+<li>右加数字不可连续超过三位，比如14写成XIV，而非XIIII。（见下方“数码限制”一项。） </li>
 </ul>
-<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">convert</span><span class="params">(String s, <span class="keyword">int</span> numRows)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (s.length() &lt;= <span class="number">1</span> || numRows &lt;= <span class="number">1</span>) &#123;</div><div class="line">    <span class="keyword">return</span> s;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  StringBuilder[] sb = <span class="keyword">new</span> StringBuilder[numRows];</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; sb.length; i++) &#123;</div><div class="line">    sb[i] = <span class="keyword">new</span> StringBuilder();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">int</span> incr = <span class="number">0</span>;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; j &lt; s.length(); j++) &#123;</div><div class="line">    <span class="keyword">if</span> (i == <span class="number">0</span>) &#123;</div><div class="line">      incr = <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (i == numRows - <span class="number">1</span>) &#123;</div><div class="line">      incr = -<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    sb[i].append(s.charAt(j));</div><div class="line">    i += incr;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; sb.length; i++) &#123;</div><div class="line">    sb[<span class="number">0</span>].append(sb[i]);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> sb[<span class="number">0</span>].toString();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="7-Reverse-Integer"><a href="#7-Reverse-Integer" class="headerlink" title="7. Reverse Integer"></a>7. <a href="https://leetcode.com/problems/reverse-integer/#/description" target="_blank" rel="external">Reverse Integer</a></h2><h4 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h4><p>Reverse digits of an integer.<br>Example1: x = 123, return 321<br>Example2: x = -123, return -321</p>
-<p>The input is assumed to be a 32-bit signed integer. Your function should return 0 when the reversed integer overflows.</p>
-<h4 id="Analysis-1"><a href="#Analysis-1" class="headerlink" title="Analysis"></a>Analysis</h4><p>这道题主要考察对边界的处理。最简单的方式是在转换过程中，使用一个64-bit的数保存中间结果，在返回前判断其是否超过32-bit的边界。<br>反转操作可参考下式：<br><code>r, x = (10 * r + x % 10), x / 10 while x != 0</code></p>
+</li>
+<li>加线乘千</li>
+<li>数码限制</li>
+</ul>
 <h4 id="Answer-1"><a href="#Answer-1" class="headerlink" title="Answer"></a>Answer</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">  <span class="keyword">long</span> r = <span class="number">0</span>;</div><div class="line">  <span class="keyword">for</span> (; x != <span class="number">0</span>; x /= <span class="number">10</span>) &#123;</div><div class="line">    r = <span class="number">10</span> * r + x % <span class="number">10</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> r &gt; Integer.MAX_VALUE || r &lt; Integer.MIN_VALUE ? <span class="number">0</span> : (<span class="keyword">int</span>) r;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="8-String-to-Integer-atoi"><a href="#8-String-to-Integer-atoi" class="headerlink" title="8. String to Integer (atoi)"></a>8. <a href="https://leetcode.com/problems/string-to-integer-atoi/#/description" target="_blank" rel="external">String to Integer (atoi)</a></h2><h4 id="Description-2"><a href="#Description-2" class="headerlink" title="Description"></a>Description</h4><p>Implement atoi to convert a string to an integer.</p>
 <p>Requirements for atoi:<br>The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.<br>The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.<br>If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.<br>If no valid conversion could be performed, a zero value is returned. If the correct value is out of the range of representable values, INT_MAX (2147483647) or INT_MIN (-2147483648) is returned.</p>
@@ -390,8 +398,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/29/leetcode-analysis-1-5/" rel="next" title="Leetcode题解 1-5">
-                <i class="fa fa-chevron-left"></i> Leetcode题解 1-5
+              <a href="/2017/04/29/leetcode-analysis-6-10/" rel="next" title="Leetcode题解 6-10">
+                <i class="fa fa-chevron-left"></i> Leetcode题解 6-10
               </a>
             
           </div>
@@ -399,10 +407,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/30/leetcode-analysis-11-15/" rel="prev" title="Leetcode题解 11-15">
-                Leetcode题解 11-15 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -522,7 +526,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-ZigZag-Conversion"><span class="nav-number">1.</span> <span class="nav-text">6. ZigZag Conversion</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Description"><span class="nav-number">1.0.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis"><span class="nav-number">1.0.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Answer"><span class="nav-number">1.0.3.</span> <span class="nav-text">Answer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Reverse-Integer"><span class="nav-number">2.</span> <span class="nav-text">7. Reverse Integer</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Description-1"><span class="nav-number">2.0.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis-1"><span class="nav-number">2.0.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Answer-1"><span class="nav-number">2.0.3.</span> <span class="nav-text">Answer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-String-to-Integer-atoi"><span class="nav-number">3.</span> <span class="nav-text">8. String to Integer (atoi)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Description-2"><span class="nav-number">3.0.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis-2"><span class="nav-number">3.0.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Answer-2"><span class="nav-number">3.0.3.</span> <span class="nav-text">Answer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-Palindrome-Number"><span class="nav-number">4.</span> <span class="nav-text">9. Palindrome Number</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Description-3"><span class="nav-number">4.0.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis-3"><span class="nav-number">4.0.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Answer-3"><span class="nav-number">4.0.3.</span> <span class="nav-text">Answer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-Regular-Expression-Matching"><span class="nav-number">5.</span> <span class="nav-text">10. Regular Expression Matching</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Description-4"><span class="nav-number">5.0.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis-4"><span class="nav-number">5.0.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Answer-4"><span class="nav-number">5.0.3.</span> <span class="nav-text">Answer</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#11-Container-With-Most-Water"><span class="nav-number">1.</span> <span class="nav-text">11. Container With Most Water</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Description"><span class="nav-number">1.0.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis"><span class="nav-number">1.0.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Answer"><span class="nav-number">1.0.3.</span> <span class="nav-text">Answer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Integer-to-Roman"><span class="nav-number">2.</span> <span class="nav-text">7. Integer to Roman</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Description-1"><span class="nav-number">2.0.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis-1"><span class="nav-number">2.0.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Answer-1"><span class="nav-number">2.0.3.</span> <span class="nav-text">Answer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-String-to-Integer-atoi"><span class="nav-number">3.</span> <span class="nav-text">8. String to Integer (atoi)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Description-2"><span class="nav-number">3.0.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis-2"><span class="nav-number">3.0.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Answer-2"><span class="nav-number">3.0.3.</span> <span class="nav-text">Answer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-Palindrome-Number"><span class="nav-number">4.</span> <span class="nav-text">9. Palindrome Number</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Description-3"><span class="nav-number">4.0.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis-3"><span class="nav-number">4.0.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Answer-3"><span class="nav-number">4.0.3.</span> <span class="nav-text">Answer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-Regular-Expression-Matching"><span class="nav-number">5.</span> <span class="nav-text">10. Regular Expression Matching</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Description-4"><span class="nav-number">5.0.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis-4"><span class="nav-number">5.0.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Answer-4"><span class="nav-number">5.0.3.</span> <span class="nav-text">Answer</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

@@ -253,6 +253,157 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://solarknight.github.io/2017/04/30/leetcode-analysis-11-15/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="超能力少年A">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/5563916">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bread and Magic">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/30/leetcode-analysis-11-15/" itemprop="url">
+                  Leetcode题解 11-15
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-30T12:10:39+08:00">
+                2017-04-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>我的<a href="https://github.com/solarknight/algorithm_exercise/tree/master/leetcode/src/main" target="_blank" rel="external">答案链接</a>，目前有java/golang/ruby三种语言的答案。</p>
+<h2 id="11-Container-With-Most-Water"><a href="#11-Container-With-Most-Water" class="headerlink" title="11. Container With Most Water"></a>11. <a href="https://leetcode.com/problems/container-with-most-water/#/description" target="_blank" rel="external">Container With Most Water</a></h2><h4 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h4><p>Given n non-negative integers a<sub>1</sub>, a<sub>2</sub>, …, a<sub>n</sub>, where each represents a point at coordinate (i, a<sub>i</sub>). n vertical lines are drawn such that the two endpoints of line i is at (i, a<sub>i</sub>) and (i, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.</p>
+<p>Note: You may not slant the container and n is at least 2.</p>
+<h4 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h4><p>由<code>a[i]</code>和<code>a[j]</code>构成的容器，其面积为<code>(j - i) * min(a[i], a[j])</code>。最左和最右两点构成的容器拥有最大的宽度，可以从这里开始遍历。<br>如果要比初始的容器面积大，则需要有更大的高度。因此可以逐渐缩小范围，直至获得最大值。</p>
+<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="keyword">int</span>[] height)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> max = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, j = height.length - <span class="number">1</span>; i &lt; j; ) &#123;</div><div class="line">      max = Math.max(max, (j - i) * Math.min(height[i], height[j]));</div><div class="line">      <span class="keyword">if</span> (height[i] &lt; height[j]) &#123;</div><div class="line">        i++;</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        j--;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> max;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="7-Integer-to-Roman"><a href="#7-Integer-to-Roman" class="headerlink" title="7. Integer to Roman"></a>7. <a href="https://leetcode.com/problems/integer-to-roman/#/description" target="_blank" rel="external">Integer to Roman</a></h2><h4 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h4><p>Given an integer, convert it to a roman numeral.<br>Input is guaranteed to be within the range from 1 to 3999.</p>
+<h4 id="Analysis-1"><a href="#Analysis-1" class="headerlink" title="Analysis"></a>Analysis</h4><p>首先要知道各个罗马数字，以及它们与十进制整数之间的转换关系。可以参考<a href="https://zh.wikipedia.org/wiki/%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97" target="_blank" rel="external">维基百科中的描述</a>。<br>罗马数字共有7个，即Ⅰ（1）、Ⅴ（5）、Ⅹ（10）、Ⅼ（50）、Ⅽ（100）、Ⅾ（500）和Ⅿ（1000）。按照下述的规则可以表示任意正整数。需要注意的是罗马数字中没有“0”，与进位制无关。</p>
+<ul>
+<li>重复数次：一个罗马数字重复几次，就表示这个数的几倍。</li>
+<li>右加左减：<ul>
+<li>在较大的罗马数字的右边记上较小的罗马数字，表示大数字加小数字。</li>
+<li>在较大的罗马数字的左边记上较小的罗马数字，表示大数字减小数字。</li>
+<li>左减的数字有限制，仅限于I、X、C。比如45不可以写成VL，只能是XLV</li>
+<li>但是，左减时不可跨越一个位值。比如，99不可以用IC（ {\displaystyle 100-1} 100-1）表示，而是用XCIX（ {\displaystyle [100-10]+[10-1]} [100-10]+[10-1]）表示。（等同于阿拉伯数字每位数字分别表示。）</li>
+<li>左减数字必须为一位，比如8写成VIII，而非IIX。</li>
+<li>右加数字不可连续超过三位，比如14写成XIV，而非XIIII。（见下方“数码限制”一项。） </li>
+</ul>
+</li>
+<li>加线乘千</li>
+<li>数码限制</li>
+</ul>
+<h4 id="Answer-1"><a href="#Answer-1" class="headerlink" title="Answer"></a>Answer</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">  <span class="keyword">long</span> r = <span class="number">0</span>;</div><div class="line">  <span class="keyword">for</span> (; x != <span class="number">0</span>; x /= <span class="number">10</span>) &#123;</div><div class="line">    r = <span class="number">10</span> * r + x % <span class="number">10</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> r &gt; Integer.MAX_VALUE || r &lt; Integer.MIN_VALUE ? <span class="number">0</span> : (<span class="keyword">int</span>) r;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="8-String-to-Integer-atoi"><a href="#8-String-to-Integer-atoi" class="headerlink" title="8. String to Integer (atoi)"></a>8. <a href="https://leetcode.com/problems/string-to-integer-atoi/#/description" target="_blank" rel="external">String to Integer (atoi)</a></h2><h4 id="Description-2"><a href="#Description-2" class="headerlink" title="Description"></a>Description</h4><p>Implement atoi to convert a string to an integer.</p>
+<p>Requirements for atoi:<br>The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.<br>The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.<br>If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.<br>If no valid conversion could be performed, a zero value is returned. If the correct value is out of the range of representable values, INT_MAX (2147483647) or INT_MIN (-2147483648) is returned.</p>
+<h4 id="Analysis-2"><a href="#Analysis-2" class="headerlink" title="Analysis"></a>Analysis</h4><p>不看提示很难跑过所有Test case的一道题。将字符串转换为整数的操作和上一题接近，都是在遍历过程中，将中间结果乘以10，再加上新的数字。<br>和上一题不同的是，即使使用64bit-int来保存中间结果，也有可能发生越界的问题。因此最好的处理方式是在遍历过程中加以判断。</p>
+<h4 id="Answer-2"><a href="#Answer-2" class="headerlink" title="Answer"></a>Answer</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(String str)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (str == <span class="keyword">null</span> || str.length() == <span class="number">0</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">char</span>[] c = str.toCharArray();</div><div class="line">  <span class="keyword">int</span> idx = <span class="number">0</span>, flag = <span class="number">1</span>;</div><div class="line">  <span class="keyword">long</span> sum = <span class="number">0</span>;</div><div class="line">  <span class="keyword">while</span> (c[idx] == <span class="string">' '</span>) &#123;</div><div class="line">    idx++;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (c[idx] == <span class="string">'-'</span>) &#123;</div><div class="line">    flag = -<span class="number">1</span>;</div><div class="line">    idx++;</div><div class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c[idx] == <span class="string">'+'</span>) &#123;</div><div class="line">    idx++;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">for</span> (; idx &lt; c.length; idx++) &#123;</div><div class="line">    <span class="keyword">int</span> t = c[idx] - <span class="string">'0'</span>;</div><div class="line">    <span class="keyword">if</span> (t &lt; <span class="number">0</span> || t &gt; <span class="number">9</span>) &#123;</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    sum = sum * <span class="number">10</span> + t;</div><div class="line">    <span class="keyword">if</span> (sum &gt; Integer.MAX_VALUE) &#123;</div><div class="line">      <span class="keyword">return</span> flag == <span class="number">1</span> ? Integer.MAX_VALUE : Integer.MIN_VALUE;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> (<span class="keyword">int</span>) sum * flag;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="9-Palindrome-Number"><a href="#9-Palindrome-Number" class="headerlink" title="9. Palindrome Number"></a>9. <a href="https://leetcode.com/problems/palindrome-number/#/description" target="_blank" rel="external">Palindrome Number</a></h2><h4 id="Description-3"><a href="#Description-3" class="headerlink" title="Description"></a>Description</h4><p>Determine whether an integer is a palindrome. Do this without extra space.</p>
+<h4 id="Analysis-3"><a href="#Analysis-3" class="headerlink" title="Analysis"></a>Analysis</h4><p>回文串是对称的，这一特性放到数字上，也就意味着对称轴一侧的数字反转后和另一侧相等。参考上面的数字反转算法，再对边界条件做处理，即可得到答案。<br>回文串长度为奇数和偶数时程序上判断条件不同，为奇数时要对较大的部分除以10再进行比较。</p>
+<h4 id="Answer-3"><a href="#Answer-3" class="headerlink" title="Answer"></a>Answer</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (x &lt; <span class="number">0</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (x &gt;= <span class="number">0</span> &amp;&amp; x &lt; <span class="number">10</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (x % <span class="number">10</span> == <span class="number">0</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">int</span> rev = <span class="number">0</span>;</div><div class="line">  <span class="keyword">for</span> (; x &gt; rev; x /= <span class="number">10</span>) &#123;</div><div class="line">    rev = <span class="number">10</span> * rev + x % <span class="number">10</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> x == rev || x == rev / <span class="number">10</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="10-Regular-Expression-Matching"><a href="#10-Regular-Expression-Matching" class="headerlink" title="10. Regular Expression Matching"></a>10. <a href="https://leetcode.com/problems/regular-expression-matching/#/description" target="_blank" rel="external">Regular Expression Matching</a></h2><h4 id="Description-4"><a href="#Description-4" class="headerlink" title="Description"></a>Description</h4><p>Implement regular expression matching with support for <code>&#39;.&#39;</code> and <code>&#39;*&#39;</code>.<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&apos;.&apos; Matches any single character.</div><div class="line">&apos;*&apos; Matches zero or more of the preceding element.</div><div class="line"></div><div class="line">The matching should cover the entire input string (not partial).</div><div class="line"></div><div class="line">The function prototype should be:</div><div class="line">bool isMatch(const char *s, const char *p)</div><div class="line"></div><div class="line">Some examples:</div><div class="line">isMatch(&quot;aa&quot;,&quot;a&quot;) → false</div><div class="line">isMatch(&quot;aa&quot;,&quot;aa&quot;) → true</div><div class="line">isMatch(&quot;aaa&quot;,&quot;aa&quot;) → false</div><div class="line">isMatch(&quot;aa&quot;, &quot;a*&quot;) → true</div><div class="line">isMatch(&quot;aa&quot;, &quot;.*&quot;) → true</div><div class="line">isMatch(&quot;ab&quot;, &quot;.*&quot;) → true</div><div class="line">isMatch(&quot;aab&quot;, &quot;c*a*b&quot;) → true</div></pre></td></tr></table></figure></p>
+<h4 id="Analysis-4"><a href="#Analysis-4" class="headerlink" title="Analysis"></a>Analysis</h4><p>s[0..i]和p[0..j]是否匹配，取决于之前字符串的匹配情况，因此这一题比较适合用动态规划来解决。构建一个长度为<code>bool[len(s) + 1][len(p) + 1]</code>的数组，以减少对边界条件的处理。<br>初始化时，<code>dp[0][0]</code>处为true，其余元素为false。然后判断<code>dp[0][j](1 &lt; j &lt;= len(p))</code>时的值。<br>对于<code>dp[i][j](1 &lt;= i &lt;= len(s), 1 &lt;= j &lt;= len(p))</code>，如果<code>p[j] == s[i] || p[j] == &#39;.&#39;</code>，则有<code>dp[i + 1][j + 1] = dp[i][j]</code>。<br>如果<code>p[j] == &#39;*&#39;</code>，又需要对<code>p[j - 1] == s[i] || p[j - 1] == &#39;.&#39;</code>及不满足的情况分别考虑。</p>
+<h4 id="Answer-4"><a href="#Answer-4" class="headerlink" title="Answer"></a>Answer</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isMatch</span><span class="params">(String s, String p)</span> </span>&#123;</div><div class="line">  <span class="keyword">boolean</span>[][] dp = <span class="keyword">new</span> <span class="keyword">boolean</span>[s.length() + <span class="number">1</span>][p.length() + <span class="number">1</span>];</div><div class="line">  dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="keyword">true</span>;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; p.length(); i++) &#123;</div><div class="line">    dp[<span class="number">0</span>][i + <span class="number">1</span>] = p.charAt(i) == <span class="string">'*'</span> &amp;&amp; dp[<span class="number">0</span>][i - <span class="number">1</span>];</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; p.length(); j++) &#123;</div><div class="line">      <span class="keyword">if</span> (p.charAt(j) == s.charAt(i)) &#123;</div><div class="line">        dp[i + <span class="number">1</span>][j + <span class="number">1</span>] = dp[i][j];</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">if</span> (p.charAt(j) == <span class="string">'.'</span>) &#123;</div><div class="line">        dp[i + <span class="number">1</span>][j + <span class="number">1</span>] = dp[i][j];</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">if</span> (p.charAt(j) == <span class="string">'*'</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (p.charAt(j - <span class="number">1</span>) != s.charAt(i) &amp;&amp; p.charAt(j - <span class="number">1</span>) != <span class="string">'.'</span>) &#123;</div><div class="line">          dp[i + <span class="number">1</span>][j + <span class="number">1</span>] = dp[i + <span class="number">1</span>][j - <span class="number">1</span>];</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">          <span class="comment">// zero || one || multi (count &gt;= 2)</span></div><div class="line">          dp[i + <span class="number">1</span>][j + <span class="number">1</span>] = dp[i + <span class="number">1</span>][j - <span class="number">1</span>] || dp[i + <span class="number">1</span>][j] || dp[i][j + <span class="number">1</span>];</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> dp[s.length()][p.length()];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://solarknight.github.io/2017/04/29/leetcode-analysis-6-10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -721,7 +872,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
